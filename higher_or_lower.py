@@ -8,8 +8,16 @@ comperision = []
 cont_game = True
 
 def selection(comperision):
+    """Taking the list for comperision it generates the list if empty or adds 1 more. Returns the winner."""
     # TODO - generate random comparison & compare 
     comperision.append(choice(game_data.data))
+
+    # Added after solution check -> check for same comparable items
+    if comperision[0] == comperision[1]:
+        comperision.pop()
+        comperision.append(choice(game_data.data))
+    
+    # From there original code
     if len(comperision) == 2:
         if comperision[0]["follower_count"] > comperision[1]["follower_count"]:
             winner = "A"
@@ -18,6 +26,7 @@ def selection(comperision):
         return winner
 
 def user_input(comperision):
+    """Informs user for options & returns their guess for winner"""
     # TODO - Ask user for tip
     print(f"Compare A: {comperision[0]["name"]}, a {comperision[0]["description"]}, from {comperision[0]["country"]}.")
     print(art.vs)
